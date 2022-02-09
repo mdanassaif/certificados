@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificados</title>
-    <script type="text/javascript" src="script.js" ></script>
+	<title>Certificados</title>
+	<style>
+		table {
+		  margin: 0 auto;
+		  text-align: center;
+		  border-collapse: collapse;
+		  border: 1px solid #d4d4d4;
+		  height: 500px; 
+		}
+		 
+		tr:nth-child(even) {
+		  background: #d4d4d4;
+		}
+		 
+		th, td {
+		  padding: 10px 30px;
+		}
+		 
+		th {
+		  border-bottom: 1px solid #d4d4d4;
+		}
+	</style>
 </head>
-<body onload="tableFromJson()">
-    <h1>Certificados</h1>
-    <p id='showData'></p>
+<body>
+<h1>Certificados</h1>
+<script src="CsvToTable.js"></script>
+<script>
+	var csvtotable = new CsvToTable({
+		csvFile: 'certificados.csv'
+	});
+	csvtotable.run();
+</script>
 </body>
 </html>
-
