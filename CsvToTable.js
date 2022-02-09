@@ -65,7 +65,7 @@
 	function buildTable() {
 		getCSV.call(this).then(function(response){
 			var allRows = response.split(/\r?\n|\r/).filter(isNotEmpty);
-	        var table = '<table>';
+	        var table = '<table id="certificados">';
 	        for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
 	            if (singleRow === 0) {
 	                table += '<thead>';
