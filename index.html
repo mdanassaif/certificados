@@ -16,7 +16,9 @@
 	csvtotable.run();
 
     $(document).ready( function () {
-    $('#certificados').DataTable();
+    $('#certificados').DataTable({
+		"pageLength": 5
+	});
 	});
 </script>
 </body>
