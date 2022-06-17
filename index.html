@@ -1,35 +1,59 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Certificados</title>
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
-	<link rel="preload" href="certificados.csv" as="script">
-	<link rel="preload" href="scripts/jquery-3.6.0.min.js" as="script">
-	<link rel="preload" href="scripts/jquery.dataTables.js" as="script">
-	<link rel="preload" href="scripts/CsvToTable.js" as="script">
-	<link rel="shortcut icon" href="images/favicon.png" />
-	<link rel="preload" href="scripts/jquery.dataTables.css" as="style">
-	<link rel="stylesheet" href="scripts/jquery.dataTables.css">
-</head>
-<body>
-<h1>Certificados</h1>
-<script src="scripts/CsvToTable.js"></script>
-<script src="scripts/jquery-3.6.0.min.js"></script>
-<script src="scripts/jquery.dataTables.js"></script>
-<script>
-	var csvtotable = new CsvToTable({
-		csvFile: 'certificados.csv'
-	});
-	csvtotable.run();
+<html lang="en">
 
-    $(document).ready( function () {
-    $('#certificados').DataTable({
-		"pageLength": 5,
-		"order": [[ 2, "desc" ]]
-	});
-	});
-</script>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Certificados de George Maia</title>
+    <meta name="author" content="George Maia">
+    <meta content="Display my certificates">
+	<link rel="shortcut icon" href="images/favicon.png" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <main class="row">
+            <div class="col">
+				<h1>Certificados</h1>
+                <div id="table-container"></div>
+            </div>
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/csv_to_html_table.js"></script>
+
+    <script>
+        function format_link(link) {
+            if (link)
+                return "<a href='https://raw.githubusercontent.com/georgemaia/certificados/main/files/" + link + "' target='_blank'><img src='https://img.shields.io/badge/PDF-EC1C24?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white'></a>";
+            else return "";
+        }
+
+        CsvToHtmlTable.init({
+            csv_path: "certificados.csv",
+            element: "table-container",
+            allow_download: false,
+            csv_options: {
+                separator: ",",
+                delimiter: '"'
+            },
+            datatables_options: {
+                paging: false
+            },
+            custom_formatting: [
+                [4, format_link]
+            ]
+        });
+    </script>
 </body>
+
 </html>
