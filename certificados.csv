@@ -1,4 +1,4 @@
-Emissor,Certificado,Carga Horária (h),Conclusão,Arquivo
+Issuer,Certificate,Workload (h),Conclusion,File
 Linuxtips, Uncomplicating Docker,20,2022-06-12,20220612_Uncomplicating_Docker.pdf
 OpenSAP, Python for Beginners,30,2022-06-01,20220601_python1_ConfirmationOfParticipation.pdf
 OpenSAP, Python for Beginners Record of Achievement,30,2022-06-01,20220601_python1_RecordOfAchievement.pdf
