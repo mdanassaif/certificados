@@ -1,3 +1,7 @@
+/**
+ * https://github.com/derekeder/csv-to-html-table
+ */
+
 var CsvToHtmlTable = CsvToHtmlTable || {};
 
 CsvToHtmlTable = {
