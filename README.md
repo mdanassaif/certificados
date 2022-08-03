@@ -1,5 +1,7 @@
 # Certificados
 
+<img src="./images/visual.png">
+
 Repositório com certificados de cursos, eventos e capacitações.
 
 URL: https://georgemaia.github.io/certificados
