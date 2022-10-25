@@ -33,28 +33,37 @@
     <script src="js/csv_to_html_table.js"></script>
 
     <script>
-        function format_link(link) {
-            if (link)
-                return "<a href='https://raw.githubusercontent.com/georgemaia/certificados/main/files/" + link + "' target='_blank'><img src='https://img.shields.io/badge/PDF-EC1C24?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white'></a>";
-            else return "";
-        }
+         var urlConfig = "config.js";
+    
+        $.getScript(urlConfig, function(){
+            $(document).ready(function(){
 
-        CsvToHtmlTable.init({
-            csv_path: "certificados.csv",
-            element: "table-container",
-            allow_download: false,
-            csv_options: {
-                separator: ",",
-                delimiter: '"'
-            },
-            datatables_options: {
-                paging: true,
-                order: [ 4, 'desc' ]
-            },
-            custom_formatting: [
-                [4, format_link]
-            ]
+                function format_link(link) {
+                if (link)
+                    return "<a href='https://raw.githubusercontent.com/georgemaia/certificados/main/files/" + link + "' target='_blank'><img src='https://img.shields.io/badge/PDF-EC1C24?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white'></a>";
+                else return "";
+                }
+
+                CsvToHtmlTable.init({
+                    csv_path: FILENAME,
+                    element: "table-container",
+                    allow_download: false,
+                    csv_options: {
+                        separator: ",",
+                        delimiter: '"'
+                    },
+                    datatables_options: {
+                        paging: true,
+                        order: [ 4, 'desc' ]
+                    },
+                    custom_formatting: [
+                        [4, format_link]
+                    ]
+                });
+            });
         });
+
+        
     </script>
 </body>
 
