@@ -40,12 +40,12 @@
 
                 function format_link(link) {
                 if (link)
-                    return "<a href='https://raw.githubusercontent.com/georgemaia/certificados/main/files/" + link + "' target='_blank'><img src='https://img.shields.io/badge/PDF-EC1C24?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white'></a>";
+                    return "<a href='" + SERVER + link + "' target='_blank'><img src='https://img.shields.io/badge/PDF-EC1C24?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white'></a>";
                 else return "";
                 }
 
                 CsvToHtmlTable.init({
-                    csv_path: FILENAME,
+                    csv_path: FULLURL,
                     element: "table-container",
                     allow_download: false,
                     csv_options: {
