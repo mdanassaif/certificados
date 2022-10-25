@@ -19,52 +19,19 @@
     <div class="container-fluid">
         <main class="row">
             <div class="col">
-                
 				<h1><img src="images/favicon.png" class="rounded"> Certificados</h1>
                 <div id="table-container"></div>
             </div>
         </main>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.csv.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="js/csv_to_html_table.js"></script>
-
-    <script>
-         var urlConfig = "config.js";
-    
-        $.getScript(urlConfig, function(){
-            $(document).ready(function(){
-
-                function format_link(link) {
-                if (link)
-                    return "<a href='" + SERVER + link + "' target='_blank'><img src='https://img.shields.io/badge/PDF-EC1C24?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white'></a>";
-                else return "";
-                }
-
-                CsvToHtmlTable.init({
-                    csv_path: FULLURL,
-                    element: "table-container",
-                    allow_download: false,
-                    csv_options: {
-                        separator: ",",
-                        delimiter: '"'
-                    },
-                    datatables_options: {
-                        paging: true,
-                        order: [ 4, 'desc' ]
-                    },
-                    custom_formatting: [
-                        [4, format_link]
-                    ]
-                });
-            });
-        });
-
-        
-    </script>
+    <script src="js/certificates.js"></script>
 </body>
 
 </html>
