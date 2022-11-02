@@ -19,10 +19,21 @@ var urlConfig = "config.js";
                 },
                 datatables_options: {
                     paging: true,
-                    responsive: true,
+                    responsive: {
+                        details: {
+                            display: $.fn.dataTable.Responsive.display.childRow,
+                            type: "column",
+                            target: 'tr'
+                        }
+                    },
                     colReorder: true,
                     order: [ 4, 'desc' ],
                     columnDefs: [
+                        {
+                            className: 'control',
+                            orderable: false,
+                            targets:   0
+                        },
                         { responsivePriority: 10001, targets: 0 },
                         { responsivePriority: 1, targets: 4 },
                         { responsivePriority: 10001, targets: 0 },
