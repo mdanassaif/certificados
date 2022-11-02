@@ -19,7 +19,17 @@ var urlConfig = "config.js";
                 },
                 datatables_options: {
                     paging: true,
-                    order: [ 4, 'desc' ]
+                    responsive: true,
+                    colReorder: true,
+                    order: [ 4, 'desc' ],
+                    columnDefs: [
+                        { responsivePriority: 10001, targets: 0 },
+                        { responsivePriority: 1, targets: 4 },
+                        { responsivePriority: 10001, targets: 0 },
+                        { responsivePriority: 10001, targets: 0 },
+                        { responsivePriority: 1, targets: 4 },
+                        { responsivePriority: 1, targets: 4 }
+                    ]
                 },
                 custom_formatting: [
                     [4, format_link]
