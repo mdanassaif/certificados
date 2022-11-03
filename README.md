@@ -6,6 +6,8 @@
 
 Repositório com certificados de cursos, eventos e capacitações.
 
+Certificates management using JavaScript on Github Pages with PDF download and keyword search on datatables.
+
 URL: https://georgemaia.github.io/certificados
 
 ![GitHub followers](https://img.shields.io/github/followers/georgemaia?style=social)
