@@ -34,12 +34,12 @@ var urlConfig = "config.js";
                             orderable: false,
                             targets:   0
                         },
-                        { responsivePriority: 10001, targets: 0 },
-                        { responsivePriority: 1, targets: 4 },
-                        { responsivePriority: 10001, targets: 0 },
-                        { responsivePriority: 10001, targets: 0 },
-                        { responsivePriority: 1, targets: 4 },
-                        { responsivePriority: 1, targets: 4 }
+                        { responsivePriority: 3, targets: 0 },
+                        { responsivePriority: 3, targets: 1 },
+                        { responsivePriority: 5, targets: 2 },
+                        { responsivePriority: 6, targets: 3 },
+                        { responsivePriority: 2, targets: 4 },
+                        { responsivePriority: 4, targets: 5 }
                     ]
                 },
                 custom_formatting: [
