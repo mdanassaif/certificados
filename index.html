@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -20,6 +28,7 @@
         <main class="row">
             <div class="col">
 				<h1><img src="images/favicon.png" class="rounded"> Certificados</h1>
+				<canvas id="chart" style="display: block; box-sizing: border-box; height: 315px; width: 630px;" width="630" height="315"></canvas>
                 <div id="table-container"></div>
             </div>
         </main>
@@ -34,6 +43,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="js/csv_to_html_table.js"></script>
     <script src="js/certificates.js"></script>
+	<script src="js/chart.js"></script>
 </body>
 
 </html>
