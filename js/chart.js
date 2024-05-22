@@ -16,30 +16,30 @@ $(document).ready(function() {
 
     // Função para ler o CSV e processar os dados
     function parseCSV(csvData) {
-    var rows = csvData.split('\n');
-    var headers = rows[0].split(',');
-    var data = [];
+        var rows = csvData.split('\n');
+        var headers = rows[0].split(',');
+        var data = [];
 
-    for (var i = 1; i < rows.length; i++) {
-        var rowData = rows[i].split(',');
-        var rowObject = {};
+        for (var i = 1; i < rows.length; i++) {
+            var rowData = rows[i].split(',');
+            var rowObject = {};
 
-        for (var j = 0; j < headers.length; j++) {
-        // rowObject[headers[j].trim()] = rowData[j].trim();
-        if (j < rowData.length) {
-            rowObject[headers[j].trim()] = rowData[j].trim();
-        } else {
-            // Handle cases where the row has fewer columns than headers (optional)
-            // For example, you could assign an empty string or a default value
-            rowObject[headers[j].trim()] = "";
+            for (var j = 0; j < headers.length; j++) {
+            // rowObject[headers[j].trim()] = rowData[j].trim();
+            if (j < rowData.length) {
+                rowObject[headers[j].trim()] = rowData[j].trim();
+            } else {
+                // Handle cases where the row has fewer columns than headers (optional)
+                // For example, you could assign an empty string or a default value
+                rowObject[headers[j].trim()] = "";
+            }
+            }
+
+            data.push(rowObject);
         }
-        }
 
-        data.push(rowObject);
-    }
-
-    // Processar e criar o gráfico com os dados
-    createChart(data);
+        // Processar e criar o gráfico com os dados
+        createChart(data);
     }
 
     // Função para agrupar dados por ano e criar o gráfico
@@ -48,17 +48,22 @@ $(document).ready(function() {
 
     for (var i = 0; i < data.length; i++) {
         var row = data[i];
-        var year = new Date(row["Conclusion"]).getFullYear();
+        var conclusionDate = new Date(row["Conclusion"]);
+        // var year = new Date(row["Conclusion"]).getFullYear();
 
-        if (!dataByYear[year]) {
-        dataByYear[year] = {
-            count: 0,
-            hours: 0,
-        };
+        if (!isNaN(conclusionDate.getTime())) {
+            var year = conclusionDate.getFullYear();
+
+            if (!dataByYear[year]) {
+                dataByYear[year] = {
+                    count: 0,
+                    hours: 0,
+                };
+            }
+
+            dataByYear[year].count++;
+            dataByYear[year].hours += parseFloat(row["Workload (h)"]);
         }
-
-        dataByYear[year].count++;
-        dataByYear[year].hours += parseFloat(row["Workload (h)"]);
     }
 
     var chartData = {
