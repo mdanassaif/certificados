@@ -1,5 +1,5 @@
 var urlConfig = "config.js";
-    
+
     $.getScript(urlConfig, function(){
         $(document).ready(function(){
 

@@ -1,30 +1,30 @@
-const FILENAMEG = "certificados.csv";
-const SERVERG = "https://raw.githubusercontent.com/georgemaia/certificados-repo/main/files/";
+var urlConfig = "config.js";
 
-const FULLURLG = SERVERG.concat(FILENAMEG);
-$(document).ready(function() {
-    $.ajax({
-    // Ler o conteúdo do CSV e iniciar o processamento
+$.getScript(urlConfig, function(){
+    $(document).ready(function() {
+        $.ajax({
+        // Ler o conteúdo do CSV e iniciar o processamento
 
-    url: FULLURLG,
-    dataType: 'text',
-    success: function(data) {
-        parseCSV(data);
-    }
+        url: FULLURL,
+        dataType: 'text',
+        success: function(data) {
+            parseCSV(data);
+        }
+        });
     });
 });
 
-    // Função para ler o CSV e processar os dados
-    function parseCSV(csvData) {
-        var rows = csvData.split('\n');
-        var headers = rows[0].split(',');
-        var data = [];
+// Função para ler o CSV e processar os dados
+function parseCSV(csvData) {
+    var rows = csvData.split('\n');
+    var headers = rows[0].split(',');
+    var data = [];
 
-        for (var i = 1; i < rows.length; i++) {
-            var rowData = rows[i].split(',');
-            var rowObject = {};
+    for (var i = 1; i < rows.length; i++) {
+        var rowData = rows[i].split(',');
+        var rowObject = {};
 
-            for (var j = 0; j < headers.length; j++) {
+        for (var j = 0; j < headers.length; j++) {
             // rowObject[headers[j].trim()] = rowData[j].trim();
             if (j < rowData.length) {
                 rowObject[headers[j].trim()] = rowData[j].trim();
@@ -33,17 +33,17 @@ $(document).ready(function() {
                 // For example, you could assign an empty string or a default value
                 rowObject[headers[j].trim()] = "";
             }
-            }
-
-            data.push(rowObject);
         }
 
-        // Processar e criar o gráfico com os dados
-        createChart(data);
+        data.push(rowObject);
     }
 
-    // Função para agrupar dados por ano e criar o gráfico
-    function createChart(data) {
+    // Processar e criar o gráfico com os dados
+    createChart(data);
+}
+
+// Função para agrupar dados por ano e criar o gráfico
+function createChart(data) {
     var dataByYear = {};
 
     for (var i = 0; i < data.length; i++) {
@@ -87,4 +87,4 @@ $(document).ready(function() {
             // height: "300px"
         },
     });
-    }
+}
