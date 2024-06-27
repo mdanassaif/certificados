@@ -17,7 +17,7 @@ URL: https://georgemaia.github.io/certificados
 
 ## USAGE
 
-Change the SERVER constant in the config.js with your full address of the certificates files.
+In the settings page of the repository, turn on Github Pages. After, change the SERVER constant in the config.js with your full address of the certificates files.
 
 ```javascript
 const SERVER = "http://localhost/certificados-repo/files/"; 
@@ -28,3 +28,5 @@ Change the FILENAME constant in the config.js with your certificates list in CSV
 ```javascript
 const FILENAME = "certificados.csv"; 
 ```
+
+Then upload the PDFs files in the folder of the server.
