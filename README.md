@@ -29,4 +29,4 @@ Change the FILENAME constant in the config.js with your certificates list in CSV
 const FILENAME = "certificados.csv"; 
 ```
 
-Then upload the PDFs files in the folder of the server.
+Then upload the PDFs files in the folder of the server. Edit the csv file certificados with yours certificates.
