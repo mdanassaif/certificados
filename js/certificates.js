@@ -12,6 +12,7 @@ var urlConfig = "config.js";
             CsvToHtmlTable.init({
                 csv_path: FULLURL,
                 element: "table-container",
+                loading_text: 'Carregando dados...',
                 allow_download: false,
                 csv_options: {
                     separator: ",",
