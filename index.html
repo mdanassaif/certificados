@@ -21,20 +21,58 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.0/wordcloud2.min.js"></script>
 </head>
 
 <body>
     <div class="container-fluid">
+        <h1><img src="images/favicon.png" class="rounded"> Certificados</h1>
         <main class="row">
-            <div class="col">
-				<h1><img src="images/favicon.png" class="rounded"> Certificados</h1>
+            <div class="col-md-6 p-4">
 				<!-- <canvas id="chart" style="display: block; box-sizing: border-box; height: 315px; width: 630px;" width="630" height="315"></canvas> -->
 				<canvas id="chart" style="height: 315px; width: 100%"></canvas>
-                <div id="table-container"></div>
+            </div>
+            <div class="col-md-6 p-4">
+                <canvas id="nuvem" style="height: 315px; width: 100%"></canvas>
+                <script>
+                    fetch('./files/certificados.csv')
+                    .then(response => response.text())
+                    .then(csv => {
+                        const results = Papa.parse(csv, { header: true });
+                        const palavras = {};
+
+                        results.data.forEach(row => {
+                            if (row.Keywords) {
+                                const keywords = row.Keywords.split(', ');
+                                keywords.forEach(keyword => {
+                                    palavras[keyword] = (palavras[keyword] || 0) + 1;
+                                });
+                            }
+                        });
+
+                        const listaPalavras = Object.entries(palavras).map(([text, value]) => [text, value * 2]);
+
+                        WordCloud(document.getElementById('nuvem'), {
+                            list: listaPalavras,
+                            minSize: 8, // Ajuste o tamanho mínimo da fonte
+                            gridSize: 3, // Ajuste a densidade
+                            weightFactor: 5, // Ajuste o fator de peso
+                            fontFamily: 'Arial', // Caso queira mudar a fonte
+                            color: 'random-dark' // caso queira mudar a cor
+                        });
+                    });
+                </script>
+            </div>
+            <div class="row">
+                <div class="col-12 p-4">
+                    <div id="table-container" class="text-center"></div>
+                </div>
             </div>
         </main>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.csv.min.js"></script>
