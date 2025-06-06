@@ -30,10 +30,10 @@ async function convertCsvToJson() {
 
             // Formata o objeto no padrão final desejado
             return {
-                name: rowObject['Certificate'],
-                date: rowObject['Conclusion'],
-                issuer: rowObject['Issuer'],
-                url: `${BASE_URL}${rowObject['File']}`
+                name:rowObject['Certificate'],
+                date:rowObject['Conclusion'],
+                issuer:rowObject['Issuer'],
+                url:`${BASE_URL}${rowObject['File']}`
             };
         });
 
