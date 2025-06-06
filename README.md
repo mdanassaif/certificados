@@ -30,3 +30,24 @@ const FILENAME = "certificados.csv";
 ```
 
 Then upload the PDFs files in the folder of the server. Edit the csv file certificados.csv with yours certificates.
+
+## JSON to Resume Schema
+
+Exports the csv data to the JSON format used in Schema Resume. Just open resume-json.html
+
+```json
+"certificates": [
+    {
+      "name": "Certificate",
+      "date": "2025-06-06",
+      "issuer": "Company",
+      "url": "https://certificate.com"
+    },
+    {
+      "name": "Certificate",
+      "date": "2026-06-05",
+      "issuer": "Company 2",
+      "url": "https://certificate.com"
+    }
+  ]
+```
