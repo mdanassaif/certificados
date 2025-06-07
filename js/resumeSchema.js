@@ -24,16 +24,17 @@ async function convertCsvToJson() {
             const values = line.split(',');
             // Cria um objeto para a linha atual mapeando cabeçalhos para valores
             const rowObject = headers.reduce((obj, header, index) => {
-                obj[header.trim()] = values[index].trim();
+                // Remove as aspas do início e do fim do valor, se existirem
+                obj[header.trim()] = values[index].trim().replace(/^"|"$/g, '');
                 return obj;
             }, {});
 
             // Formata o objeto no padrão final desejado
             return {
-                name:rowObject['Certificate'],
-                date:rowObject['Conclusion'],
-                issuer:rowObject['Issuer'],
-                url:`${BASE_URL}${rowObject['File']}`
+                name: rowObject['Certificate'],
+                date: rowObject['Conclusion'],
+                issuer: rowObject['Issuer'],
+                url: `${BASE_URL}${rowObject['File']}`
             };
         });
 
