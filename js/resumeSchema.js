@@ -22,9 +22,7 @@ async function convertCsvToJson() {
 
         const certificatesList = lines.map(line => {
             const values = line.split(',');
-            // Cria um objeto para a linha atual mapeando cabeçalhos para valores
             const rowObject = headers.reduce((obj, header, index) => {
-                // Remove as aspas do início e do fim do valor, se existirem
                 obj[header.trim()] = values[index].trim().replace(/^"|"$/g, '');
                 return obj;
             }, {});
@@ -32,11 +30,15 @@ async function convertCsvToJson() {
             // Formata o objeto no padrão final desejado
             return {
                 name: rowObject['Certificate'],
-                date: rowObject['Conclusion'],
+                date: new Date(rowObject['Conclusion']), // Convertendo a string para objeto Date
                 issuer: rowObject['Issuer'],
                 url: `${BASE_URL}${rowObject['File']}`
             };
+
         });
+
+        // Ordena pela data em ordem decrescente
+        certificatesList.sort((a, b) => b.date - a.date);
 
         const finalJsonData = { "certificates": certificatesList };
 
