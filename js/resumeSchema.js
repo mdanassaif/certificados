@@ -27,14 +27,12 @@ async function convertCsvToJson() {
                 return obj;
             }, {});
 
-            // Formata o objeto no padrão final desejado
             return {
                 name: rowObject['Certificate'],
-                date: new Date(rowObject['Conclusion']), // Convertendo a string para objeto Date
+                date: new Date(rowObject['Conclusion']).toISOString().split('T')[0], // Formata apenas a data
                 issuer: rowObject['Issuer'],
                 url: `${BASE_URL}${rowObject['File']}`
             };
-
         });
 
         // Ordena pela data em ordem decrescente
