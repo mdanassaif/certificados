@@ -27,9 +27,13 @@ async function convertCsvToJson() {
                 return obj;
             }, {});
 
+            // Garante que o valor da data está limpo e válido
+            let dateValue = rowObject['Conclusion'].trim();
+            let formattedDate = dateValue.match(/^\d{4}-\d{2}-\d{2}$/) ? dateValue : null; // Valida formato "YYYY-MM-DD"
+
             return {
                 name: rowObject['Certificate'],
-                date: new Date(rowObject['Conclusion']).toISOString().split('T')[0], // Formata apenas a data
+                date: formattedDate ? formattedDate : "Data inválida", // Evita erro na conversão
                 issuer: rowObject['Issuer'],
                 url: `${BASE_URL}${rowObject['File']}`
             };
