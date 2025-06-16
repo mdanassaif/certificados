@@ -20,13 +20,13 @@ URL: https://georgemaia.github.io/certificados
 In the settings page of the repository, turn on Github Pages. After, change the SERVER constant in the config.js with your full address of the certificates files.
 
 ```javascript
-const SERVER = "http://localhost/certificados-repo/files/"; 
+const SERVER = "http://localhost/certificados-repo/files/";
 ```
 
 Change the FILENAME constant in the config.js with your certificates list in CSV format.
 
 ```javascript
-const FILENAME = "certificados.csv"; 
+const FILENAME = "certificados.csv";
 ```
 
 Then upload the PDFs files in the folder of the server. Edit the csv file certificados.csv with yours certificates.
@@ -51,3 +51,5 @@ Exports the csv data to the JSON format used in Schema Resume. Just open resume-
     }
   ]
 ```
+
+Model to sava in github gist: resume.json
