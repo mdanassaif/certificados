@@ -52,4 +52,4 @@ Exports the csv data to the JSON format used in Schema Resume. Just open resume-
   ]
 ```
 
-Model to sava in github gist: resume.json
+Model to save in github gist: resume.json
