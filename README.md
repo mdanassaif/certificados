@@ -33,7 +33,7 @@ Then upload the PDFs files in the folder of the server. Edit the csv file certif
 
 ## JSON to Resume Schema
 
-Exports the csv data to the JSON format used in Schema Resume. Just open resume-json.html
+Exports the csv data to the JSON format used in Schema Resume. Just open resume-json.html and copy the JSON to the Github GIST.
 
 ```json
 "certificates": [
